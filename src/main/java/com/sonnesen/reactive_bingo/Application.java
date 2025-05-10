@@ -1,4 +1,4 @@
-package com.example.reactive_bingo;
+package com.sonnesen.reactive_bingo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

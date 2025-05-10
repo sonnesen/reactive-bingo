@@ -1,3 +1,13 @@
 spring:
   application:
     name: reactive-bingo
+
+  data:
+    mongodb:
+      uri: mongodb://admin:adminpwd@localhost:27017/bingo?authSource=admin
+      # database: bingo
+      # authentication-database: admin
+      # username: ${MONGODB_USERNAME:-admin}
+      # password: ${MONGODB_PASSWORD:-adminpwd}
+      # port: ${MONGODB_PORT:-27017}
+      # host: ${MONGODB_HOST:-mongodb}

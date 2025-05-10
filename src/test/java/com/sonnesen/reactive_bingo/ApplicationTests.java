@@ -1,4 +1,4 @@
-package com.example.reactive_bingo;
+package com.sonnesen.reactive_bingo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,0 +1,45 @@
+services:
+  # app:
+  #   container_name: todolistapp
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     mongodb:
+  #       condition: service_healthy
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=prd
+  #     - SPRING_DATA_MONGODB_HOST=${MONGODB_HOST:-mongodb}
+  #     - SPRING_DATA_MONGODB_PORT=${MONGODB_PORT:-27017}
+  #     - SPRING_DATA_MONGODB_USERNAME=${MONGODB_USERNAME:-admin}
+  #     - SPRING_DATA_MONGODB_PASSWORD=${MONGODB_PASSWORD:-adminpwd}
+  #   networks:
+  #     - todolist-network
+
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD:-adminpwd}
+      - MONGO_INITDB_DATABASE=bingo
+    ports:
+      - "27017:27017"
+    volumes:
+      - bingodb-data:/data/db
+    networks:
+      - bingo-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  bingodb-data:
+
+networks:
+  bingo-network:
